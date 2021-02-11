@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="common/header :: common-header"/>
+
+<body>
+<div class="container">
+    <h5 class="center-block">Welcome to Admin Portal for Ayoub's Bookstore.</h5>
+    <hr/>
+    <img class="img-responsive" style="width: 250px;" th:src="@{/image/logo.png}">
+    <div class="row">
+        <div class="col-md-5 offset-md-3">
+            <div class="bg-danger" th:if="${param.error}">
+                Invalid Username or password.
+            </div>
+            <div class="bg-danger" th:if="${param.logout}">
+                You have been logged out.
+            </div>
+            <form method="post" th:action="@{/login}">
+                <h2 class="form-heading">Please Sign in</h2>
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input autofocus="autofocus" class="form-control" id="username" name="username"
+                           placeholder="username" required="required"
+                           type="text">
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input class="form-control" id="password" name="password" placeholder="password" required="required"
+                           type="password">
+                </div>
+                <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+            </form>
+        </div>
+    </div>
+</div>
+<div th:replace="common/header :: body-bottom-scripts"/>
+</body>
+</html>
